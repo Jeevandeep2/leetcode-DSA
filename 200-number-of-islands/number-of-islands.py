@@ -22,13 +22,10 @@ class Solution:
                         ): 
                         visit.add((nr, nc)) 
                         q.append((nr, nc))
-
-
         count = 0
         rows = len(grid)
         cols = len(grid[0])
         visit = set()
-
         for r in range(rows): 
             for c in range(cols): 
                 if grid[r][c] == "1" and (r, c) not in visit: 
