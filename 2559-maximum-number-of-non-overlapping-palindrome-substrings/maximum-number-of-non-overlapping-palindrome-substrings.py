@@ -3,6 +3,8 @@ class Solution:
         n = len(s)
         ans = 0
         i = 0
+
+        
         while i < n:
             if i + k <= n and s[i:i+k] == s[i:i+k][::-1]:
                 ans += 1
