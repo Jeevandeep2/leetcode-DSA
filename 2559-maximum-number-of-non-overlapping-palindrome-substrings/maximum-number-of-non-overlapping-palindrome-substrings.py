@@ -3,7 +3,6 @@ class Solution:
         n = len(s)
         ans = 0
         i = 0
-        
         while i < n:
             if i + k <= n and s[i:i+k] == s[i:i+k][::-1]:
                 ans += 1
@@ -13,5 +12,4 @@ class Solution:
                 i += k + 1  
             else:
                 i += 1  
-                
         return ans
