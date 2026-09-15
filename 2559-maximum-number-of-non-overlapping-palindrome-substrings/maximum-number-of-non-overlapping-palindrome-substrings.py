@@ -3,7 +3,6 @@ class Solution:
         n = len(s)
         ans = 0
         start = 0
-
         for r in range(k - 1, n):
             for length in range(k, r - start + 2):
                 l = r - length + 1
