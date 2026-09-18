@@ -19,5 +19,4 @@ class Solution:
             if total == right - left + 1:
                 res.append(s[left:right + 1])
                 queue.clear()
-                
         return res
