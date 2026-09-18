@@ -5,6 +5,7 @@ class Solution:
         last = {c: s.rfind(c) for c in counts}
         res = []
         queue = deque()
+        
         for c in counts:
             queue.appendleft([first[c], last[c], counts[c]])
             left = inf
