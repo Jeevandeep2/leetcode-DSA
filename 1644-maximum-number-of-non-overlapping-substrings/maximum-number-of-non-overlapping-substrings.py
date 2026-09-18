@@ -5,24 +5,18 @@ class Solution:
         last = {c: s.rfind(c) for c in counts}
         res = []
         queue = deque()
-
         for c in counts:
             queue.appendleft([first[c], last[c], counts[c]])
-
             left = inf
             right = -inf
             total = 0
-
             for x, y, z in queue:
                 total += z
                 left = min(left, x)
                 right = max(right, y)
-
                 if total == right - left + 1:
                     break
-
             if total == right - left + 1:
                 res.append(s[left:right + 1])
                 queue.clear()
-
         return res
