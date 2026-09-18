@@ -3,7 +3,6 @@ class Solution:
         counts = Counter(s)
         first = {c: s.find(c) for c in counts}
         last = {c: s.rfind(c) for c in counts}
-
         res = []
         queue = deque()
 
