@@ -12,4 +12,5 @@ class Solution:
             dp = next_dp
             for r in range(k):
                 result[r] += dp[r]
+                
         return result
