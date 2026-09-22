@@ -91,7 +91,6 @@ class Solution:
         build(0, 0, n - 1)
         ans = []
         
-        # Process queries sequentially
         for idx, val, start, xi in queries:
             val %= k
             update(0, 0, n - 1, idx, val)
