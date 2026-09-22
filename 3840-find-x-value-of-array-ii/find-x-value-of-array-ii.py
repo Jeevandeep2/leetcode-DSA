@@ -1,12 +1,9 @@
 class Solution:
     def resultArray(self, nums: List[int], k: int, queries: List[List[int]]) -> List[int]:
         n = len(nums)
-        # Pre-allocate flat arrays for the segment tree to eliminate object allocation overhead
-        # Max value of k is small (typically <= 5), so we use exact sizing.
         tree_prod = [1] * (4 * n)
         tree_remain = [[0] * k for _ in range(4 * n)]
         
-        # In-place modulo reduction of base elements
         for i in range(n):
             nums[i] %= k
 
