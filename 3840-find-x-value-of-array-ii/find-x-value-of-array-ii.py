@@ -58,6 +58,7 @@ class Solution:
 
         # Segment Tree Range Queries
         def query(cur: int, tl: int, tr: int, l: int, r: int, is_first: bool) -> bool:
+
             if l <= tl and tr <= r:
                 if is_first:
                     q_prod[0] = tree_prod[cur]
