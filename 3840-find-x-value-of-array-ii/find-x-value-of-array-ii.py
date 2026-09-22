@@ -6,8 +6,6 @@ class Solution:
         
         for i in range(n):
             nums[i] %= k
-
-        # Helper function to merge children configurations
         def merge(left_idx: int, right_idx: int, target_idx: int):
             l_prod = tree_prod[left_idx]
             r_prod = tree_prod[right_idx]
@@ -16,8 +14,6 @@ class Solution:
             l_rem = tree_remain[left_idx]
             r_rem = tree_remain[right_idx]
             t_rem = tree_remain[target_idx]
-            
-            # Combine counts
             for i in range(k):
                 t_rem[i] = l_rem[i]
                 
