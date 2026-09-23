@@ -7,22 +7,17 @@ class Solution:
             return -1
         if target == 0: 
             return len(nums)
-        
+
         left = 0
         current_sum = 0
         max_len = -1
         n = len(nums)
-        
-        # Fast sliding window loop using manual iteration rather than enumerate
+
         for right in range(n):
             current_sum += nums[right]
-            
-            # Shrink the window if current sum exceeds target
             while current_sum > target:
                 current_sum -= nums[left]
                 left += 1
-                
-            # Check if exact target matches
             if current_sum == target:
                 window_len = right - left + 1
                 if window_len > max_len:
