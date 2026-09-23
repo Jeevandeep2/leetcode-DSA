@@ -11,7 +11,6 @@ class Solution:
         current_sum = 0
         max_len = -1
         n = len(nums)
-
         for right in range(n):
             current_sum += nums[right]
             while current_sum > target:
