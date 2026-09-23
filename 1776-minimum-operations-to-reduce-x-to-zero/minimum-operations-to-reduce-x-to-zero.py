@@ -2,12 +2,12 @@ class Solution:
     def minOperations(self, nums: list[int], x: int) -> int:
         target = sum(nums) - x
         
-        # Quick exit cases
+
         if target < 0: 
             return -1
         if target == 0: 
             return len(nums)
-            
+
         left = 0
         current_sum = 0
         max_len = -1
