@@ -8,7 +8,6 @@ class Solution:
         if target == 0: 
             return len(nums)
         
-        # Micro-optimization: Localize variables to speed up lookups inside the loop
         left = 0
         current_sum = 0
         max_len = -1
