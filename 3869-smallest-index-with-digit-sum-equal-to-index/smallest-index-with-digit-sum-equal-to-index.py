@@ -6,7 +6,6 @@ class Solution:
             while num:
                 num, digit = divmod(num, 10)
                 total += digit
-
             return total
 
         for i, num in enumerate(nums):
