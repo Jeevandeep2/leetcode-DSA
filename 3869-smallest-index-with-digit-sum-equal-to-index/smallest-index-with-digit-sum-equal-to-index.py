@@ -11,5 +11,4 @@ class Solution:
         for i, num in enumerate(nums):
             if get_digit_sum(num) == i:
                 return i
-
         return -1
