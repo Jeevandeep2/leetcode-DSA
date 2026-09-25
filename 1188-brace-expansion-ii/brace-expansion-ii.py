@@ -1,6 +1,5 @@
 class Solution:
     def braceExpansionII(self, expression: str) -> list[str]:
-        
         op = []  # Operator stack
         stk = []  # Set stack
 
