@@ -10,5 +10,6 @@ class Solution:
                 start = -1
             elif start < 0:
                 ans.append(c)
+
         
         return "".join(ans)
