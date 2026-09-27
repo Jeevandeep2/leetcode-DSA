@@ -2,7 +2,6 @@ class Solution:
     def reverseParentheses(self, s: str) -> str:
         open_parentheses_indices = deque()
         result = []
-        
         for current_char in s:
             if current_char == "(":
                 open_parentheses_indices.append(len(result))
