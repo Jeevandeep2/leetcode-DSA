@@ -6,5 +6,6 @@ class Solution:
                 openBrackets += 1
             elif c == ')':
                 openBrackets -= 1
-            ans = max(ans, openBrackets) 
+            ans = max(ans, openBrackets)
+             
         return ans
