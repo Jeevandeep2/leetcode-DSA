@@ -7,4 +7,5 @@ class Solution:
             elif c == ')':
                 openBrackets -= 1
             ans = max(ans, openBrackets)
+            
         return ans
