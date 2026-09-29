@@ -5,28 +5,27 @@ class Solution:
         if (m + n - 1) % 2:
             return False
 
-        if grid[0][0] == ')' or grid[-1][-1] == '(':
+        if grid[0][0] != '(' or grid[-1][-1] != ')':
             return False
 
-        dp = [set() for _ in range(n)]
-        dp[0].add(1)
+        dp = [0] * n
+        dp[0] = 2
 
         for i in range(m):
             for j in range(n):
                 if i == 0 and j == 0:
                     continue
 
-                cur = set()
+                x = dp[j]
 
-                if i > 0:
-                    cur |= dp[j]
-
-                if j > 0:
-                    cur |= dp[j - 1]
+                if j:
+                    x |= dp[j - 1]
 
                 if grid[i][j] == '(':
-                    dp[j] = {x + 1 for x in cur}
+                    x <<= 1
                 else:
-                    dp[j] = {x - 1 for x in cur if x > 0}
+                    x >>= 1
 
-        return 0 in dp[-1]
+                remaining = m + n - i - j - 2
+                dp[j] = x & ((1 << (remaining + 1)) - 1)
+        return bool(dp[-1] & 1)
