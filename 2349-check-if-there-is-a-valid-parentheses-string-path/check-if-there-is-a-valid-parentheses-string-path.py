@@ -28,4 +28,5 @@ class Solution:
 
                 remaining = m + n - i - j - 2
                 dp[j] = x & ((1 << (remaining + 1)) - 1)
+                
         return bool(dp[-1] & 1)
