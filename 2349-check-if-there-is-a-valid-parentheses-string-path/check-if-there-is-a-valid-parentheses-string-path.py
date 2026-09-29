@@ -35,4 +35,5 @@ class Solution:
 
                 dp[j] = x
                 left = x
+                
         return bool(dp[-1] & 1)
