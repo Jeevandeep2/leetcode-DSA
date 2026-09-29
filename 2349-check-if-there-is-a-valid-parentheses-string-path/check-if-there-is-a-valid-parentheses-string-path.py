@@ -1,32 +1,32 @@
 class Solution:
     def hasValidPath(self, grid: list[list[str]]) -> bool:
-        n = len(grid)
-        m = len(grid[0])
-        path_len = n + m - 1
+        m, n = len(grid), len(grid[0])
 
-        if path_len % 2 == 1:
-            return False
-        if grid[0][0] != "(" or grid[n - 1][m - 1] != ")":
+        if (m + n - 1) % 2:
             return False
 
-        dp = [[0] * m for _ in range(n)]
+        if grid[0][0] != '(' or grid[-1][-1] != ')':
+            return False
 
-        dp[0][0] = 1 << 1
+        dp = [0] * n
+        dp[0] = 2
 
-        for i in range(n):
-            for j in range(m):
-                change = 1 if grid[i][j] == "(" else -1
+        for i in range(m):
+            for j in range(n):
+                if i == 0 and j == 0:
+                    continue
 
-                if i > 0:
-                    if change == 1:
-                        dp[i][j] |= dp[i - 1][j] << 1
-                    else:
-                        dp[i][j] |= dp[i - 1][j] >> 1
+                x = dp[j]
 
-                if j > 0:
-                    if change == 1:
-                        dp[i][j] |= dp[i][j - 1] << 1
-                    else:
-                        dp[i][j] |= dp[i][j - 1] >> 1
+                if j:
+                    x |= dp[j - 1]
 
-        return bool(dp[n - 1][m - 1] & 1)
+                if grid[i][j] == '(':
+                    x <<= 1
+                else:
+                    x >>= 1
+
+                remaining = m + n - i - j - 2
+                dp[j] = x & ((1 << (remaining + 1)) - 1)
+
+        return bool(dp[-1] & 1)
