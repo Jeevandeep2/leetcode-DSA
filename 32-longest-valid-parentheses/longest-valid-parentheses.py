@@ -14,5 +14,4 @@ class Solution:
                 else:
                     res = max(res, i - st[-1])
 
-                    
         return res
