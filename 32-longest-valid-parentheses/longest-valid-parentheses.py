@@ -13,4 +13,5 @@ class Solution:
                     st.append(i)
                 else:
                     res = max(res, i - st[-1])
+                    
         return res
