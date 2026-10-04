@@ -5,7 +5,8 @@ class Solution:
             l += ((c == '(') << 1) - 1
             h += ((c != ')') << 1) - 1
 
-            if h < 0: return False
+            if h < 0: 
+                return False
             l = max(l, 0)
 
         return l == 0
