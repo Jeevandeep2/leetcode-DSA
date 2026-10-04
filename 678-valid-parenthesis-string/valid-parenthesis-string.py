@@ -9,5 +9,4 @@ class Solution:
                 return False
 
             l = max(l, 0)
-            
         return l == 0
