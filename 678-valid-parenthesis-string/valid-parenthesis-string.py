@@ -6,7 +6,6 @@ class Solution:
             h += ((c != ')') << 1) - 1
 
             if h < 0: return False
-            
             l = max(l, 0)
 
         return l == 0
