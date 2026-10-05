@@ -8,6 +8,7 @@ class Solution:
                 deapth -= 1
                 if s[i-1] == '(':
                     ans += 1 << deapth
+                    
         return ans
 
         
