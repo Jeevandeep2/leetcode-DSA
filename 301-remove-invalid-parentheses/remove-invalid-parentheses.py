@@ -1,27 +1,60 @@
 class Solution:
     def removeInvalidParentheses(self, s: str) -> list[str]:
-        self.valid_expressions = set()
-        self.min_removed = float('inf')
-
-        def recurse(index, left_count, right_count, expr, removed_count):
-            if index == len(s):
-                if left_count == right_count:
-                    if removed_count < self.min_removed:
-                        self.valid_expressions.clear()
-                        self.min_removed = removed_count
-                    if removed_count == self.min_removed:
-                        self.valid_expressions.add(expr)
+        # Step 1: Calculate the exact minimum number of '(' and ')' to remove
+        rem_left = 0
+        rem_right = 0
+        
+        for char in s:
+            if char == '(':
+                rem_left += 1
+            elif char == ')':
+                if rem_left > 0:
+                    rem_left -= 1
+                else:
+                    rem_right += 1
+        
+        result = set()
+        
+        # Step 2: Backtracking with aggressive pruning
+        def dfs(index: int, left_rem: int, right_rem: int, balance: int, path: list[str]):
+            # Early pruning: if balance goes negative, the expression is invalid
+            if balance < 0:
                 return
-
+                
+            # Base Case: Reached the end of the string
+            if index == len(s):
+                if left_rem == 0 and right_rem == 0 and balance == 0:
+                    result.add("".join(path))
+                return
+            
             char = s[index]
-            if char not in ['(', ')']:
-                recurse(index + 1, left_count, right_count, expr + char, removed_count)
+            
+            if char == '(':
+                # Option 1: Remove '(' if we still have a removal budget
+                if left_rem > 0:
+                    dfs(index + 1, left_rem - 1, right_rem, balance, path)
+                
+                # Option 2: Keep '('
+                path.append(char)
+                dfs(index + 1, left_rem, right_rem, balance + 1, path)
+                path.pop() # Backtrack
+                
+            elif char == ')':
+                # Option 1: Remove ')' if we still have a removal budget
+                if right_rem > 0:
+                    dfs(index + 1, left_rem, right_rem - 1, balance, path)
+                
+                # Option 2: Keep ')'
+                path.append(char)
+                dfs(index + 1, left_rem, right_rem, balance - 1, path)
+                path.pop() # Backtrack
+                
             else:
-                recurse(index + 1, left_count, right_count, expr, removed_count + 1)
-                if char == '(':
-                    recurse(index + 1, left_count + 1, right_count, expr + char, removed_count)
-                elif char == ')' and left_count > right_count:
-                    recurse(index + 1, left_count, right_count + 1, expr + char, removed_count)
+                # Letters must always be kept
+                path.append(char)
+                dfs(index + 1, left_rem, right_rem, balance, path)
+                path.pop() # Backtrack
 
-        recurse(0, 0, 0, "", 0)
-        return list(self.valid_expressions)
+        # Start the recursive search
+        dfs(0, rem_left, rem_right, 0, [])
+        return list(result)
