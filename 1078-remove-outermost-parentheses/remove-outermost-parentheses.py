@@ -8,5 +8,4 @@ class Solution:
                 res.append(c)
             if c == "(":
                 stack.append(c)
-                
         return "".join(res)
