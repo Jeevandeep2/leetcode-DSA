@@ -1,16 +1,23 @@
 class Solution:
     def minInsertions(self, s: str) -> int:
-        length = len(s)
-        insertions = left_count = index = 0
-        while index < length:
-            if s[index] == "(":
-                left_count += 1; index += 1
+        ans = 0
+        open_needed = 0  # Tracks how many ')' pairs we need for our open '('
+        
+        for char in s:
+            if char == '(':
+                # Since each '(' needs two ')', if we have an odd number of needed ')',
+                # it means the previous '(' only got one ')'. We must insert one ')' right now.
+                if open_needed % 2 == 1:
+                    ans += 1
+                    open_needed -= 1
+                open_needed += 2
             else:
-                if left_count > 0: left_count -= 1
-                else: insertions += 1
-                if index < length - 1 and s[index + 1] == ")":
-                    index += 2
-                else:
-                    insertions += 1; index += 1
-        insertions += left_count * 2
-        return insertions
+                # We encountered a ')'. We decrement our required ')' count.
+                open_needed -= 1
+                # If open_needed drops below 0, it means we have a ')' without a matching '('.
+                # We must insert a '(' (which supplies 2 closing slots), so we add 1 to ans and 2 to open_needed.
+                if open_needed < 0:
+                    ans += 1
+                    open_needed += 2
+                    
+        return ans + open_needed
