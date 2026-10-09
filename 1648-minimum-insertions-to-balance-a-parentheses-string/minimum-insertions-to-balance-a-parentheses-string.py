@@ -1,16 +1,23 @@
 class Solution:
     def minInsertions(self, s: str) -> int:
-        length = len(s)
-        insertions = left_count = index = 0
-        while index < length:
-            if s[index] == "(":
-                left_count += 1; index += 1
+        open = ans = 0
+        i = 0
+
+        while i < len(s):
+            if s[i] == '(':
+                open += 1
             else:
-                if left_count > 0: left_count -= 1
-                else: insertions += 1
-                if index < length - 1 and s[index + 1] == ")":
-                    index += 2
+                # Step 1: make a "))"
+                if i + 1 < len(s) and s[i + 1] == ')':
+                    i += 1
                 else:
-                    insertions += 1; index += 1
-        insertions += left_count * 2
-        return insertions
+                    ans += 1
+
+                # Step 2: find its '('
+                if open > 0:
+                    open -= 1
+                else:
+                    ans += 1
+            i += 1
+
+        return ans + open * 2
