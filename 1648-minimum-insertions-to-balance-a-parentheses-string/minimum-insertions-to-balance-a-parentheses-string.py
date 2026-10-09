@@ -13,5 +13,4 @@ class Solution:
                 if open_needed < 0:
                     ans += 1
                     open_needed += 2
-                    
         return ans + open_needed
