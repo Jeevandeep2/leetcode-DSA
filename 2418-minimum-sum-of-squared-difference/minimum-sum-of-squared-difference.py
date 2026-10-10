@@ -8,6 +8,7 @@ class Solution:
         d.sort(reverse=True)
         d.append(0)
         n = len(nums1)
+        
         for i in range(1, n + 1):
             cost = (d[i - 1] - d[i]) * i
             if cost > k:
