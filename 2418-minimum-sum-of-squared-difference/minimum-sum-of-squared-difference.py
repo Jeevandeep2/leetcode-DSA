@@ -4,7 +4,6 @@ class Solution:
         d = [abs(a - b) for a, b in zip(nums1, nums2)]
         if sum(d) <= k:
             return 0
-
         d.sort(reverse=True)
         d.append(0)
         n = len(nums1)
