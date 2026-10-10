@@ -1,17 +1,23 @@
 class Solution:
     def minSumSquareDiff(self, nums1: list[int], nums2: list[int], k1: int, k2: int) -> int:
-        diffs = [abs(nums1[i] - nums2[i]) for i in range(len(nums1))]
-        k, total_diff = k1 + k2, sum(diffs)
-        if k >= total_diff: return 0
-        max_diff = max(diffs)
-        counts = [0] * (max_diff + 1)
-        for d in diffs: counts[d] += 1
-        for i in range(max_diff, 0, -1):
-            if counts[i] == 0: continue
-            reduce_amount = min(counts[i], k)
-            counts[i] -= reduce_amount
-            counts[i - 1] += reduce_amount
-            k -= reduce_amount
-            if k == 0: break
-                
-        return sum(counts[i] * (i * i) for i in range(max_diff + 1) if counts[i] > 0)
+        k = k1 + k2
+        d = [abs(a - b) for a, b in zip(nums1, nums2)]
+        if sum(d) <= k:
+            return 0
+
+        d.sort(reverse=True)
+        d.append(0)
+        n = len(nums1)
+
+        for i in range(1, n + 1):
+            cost = (d[i - 1] - d[i]) * i
+            if cost > k:
+                q, r = divmod(k, i)
+                hi = d[i - 1] - q
+                return (
+                    hi * hi * (i - r)
+                    + (hi - 1) * (hi - 1) * r
+                    + sum(x * x for x in d[i:n])
+                )
+            k -= cost
+        return 0
