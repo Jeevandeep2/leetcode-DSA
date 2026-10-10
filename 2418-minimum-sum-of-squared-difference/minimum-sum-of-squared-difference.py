@@ -6,7 +6,6 @@ class Solution:
         max_diff = max(diffs)
         counts = [0] * (max_diff + 1)
         for d in diffs: counts[d] += 1
-            
         for i in range(max_diff, 0, -1):
             if counts[i] == 0: continue
             reduce_amount = min(counts[i], k)
