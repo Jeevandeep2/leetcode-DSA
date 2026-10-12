@@ -1,8 +1,20 @@
 class Solution:
-    def maxSum(self, nums: list[int], k: int) -> int:
-        cnt = [sum(x >> b & 1 for x in nums) for b in range(30)]  # coins in each bit column, never changes
-        total = 0
-        for i in range(k):  # build row i of the stacked picture
-            row = sum(1 << b for b in range(30) if cnt[b] > i)  # a coin from every column with more than i coins
-            total += row * row
-        return total % (10**9 + 7)
+    def maxSum(self, nums: List[int], k: int) -> int:
+        MOD = 10**9 + 7
+        cnt = [0] * 30
+
+        for x in nums:
+            for b in range(30):
+                if x >> b & 1:
+                    cnt[b] += 1
+
+        ans = 0
+        for _ in range(k):
+            x = 0
+            for b in range(30):
+                if cnt[b]:
+                    x |= 1 << b
+                    cnt[b] -= 1
+            ans = (ans + x * x) % MOD
+
+        return ans
