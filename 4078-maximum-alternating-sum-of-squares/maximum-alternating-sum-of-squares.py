@@ -1,4 +1,7 @@
+import numpy as np
+
 class Solution:
     def maxAlternatingSum(self, nums: list[int]) -> int:
-        sq = sorted(x * x for x in nums)
-        return sum(sq) - 2 * sum(sq[:len(sq) // 2]) 
+        sq = np.array(nums, dtype=np.int64) ** 2
+        h = len(sq) // 2
+        return int(sq.sum() - 2 * np.partition(sq, h)[:h].sum())  # smallest half in front, any order
