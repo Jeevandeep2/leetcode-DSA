@@ -1,8 +1,4 @@
 class Solution:
-    def maxAlternatingSum(self, nums: List[int]) -> int:
-        
-        n = len(nums)
-        for i in range(n):
-            nums[i] *= nums[i]
-        nums.sort()
-        return -sum(nums[: n // 2]) + sum(nums[n // 2 :])
+    def maxAlternatingSum(self, nums: list[int]) -> int:
+        sq = sorted(x * x for x in nums)
+        return sum(sq) - 2 * sum(sq[:len(sq) // 2])  # add everything, then flip the smallest half to minus
