@@ -1,5 +1,4 @@
 import numpy as np
-
 class Solution:
     def maxAlternatingSum(self, nums: list[int]) -> int:
         sq = np.array(nums, dtype=np.int64) ** 2
