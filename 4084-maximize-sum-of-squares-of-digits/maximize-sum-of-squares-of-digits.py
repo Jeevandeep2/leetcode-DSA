@@ -7,4 +7,5 @@ class Solution:
         if r > 0:
             ans += str(r)
         ans += "0" * (num - len(ans))
+        
         return ans
