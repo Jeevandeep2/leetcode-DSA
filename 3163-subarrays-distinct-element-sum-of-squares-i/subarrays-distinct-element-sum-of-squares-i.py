@@ -1,10 +1,10 @@
 class Solution:
     def sumCounts(self, nums: List[int]) -> int:
-        n = len(nums)
-        res = 0
-        for i in range(n):
-            s = set()
-            for j in range(i, n):
-                s.add(nums[j])
-                res += len(s) * len(s)
-        return res
+        n, ans=len(nums), 0
+        for l in range(n):
+            seen, cnt=0, 0
+            for x in nums[l:]:
+                cnt+=((seen>>x)&1)==0
+                seen|=(1<<x)
+                ans+=cnt*cnt
+        return ans
