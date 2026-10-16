@@ -1,50 +1,37 @@
-MOD = 1_000_000_007
-
-
-class SegmentTreeNode:
-    def __init__(self, lo, hi) -> None:
-        self.lo = lo
-        self.hi = hi
-        self.val = 0
-        self.lazy = 0
-        if lo + 1 < hi:
-            mid = (lo + hi) // 2
-            self.left = SegmentTreeNode(lo, mid)
-            self.right = SegmentTreeNode(mid, hi)
-
-    def update(self, val):
-        self.lazy += val
-        self.val += val * (self.hi - self.lo)
-
-    def query(self, lo, hi):
-        if self.lo >= lo and self.hi <= hi:
-            res = self.val
-            self.update(1)
-            return res
-        mid = (self.lo + self.hi) // 2
-        res = 0
-        self.left.update(self.lazy)
-        self.right.update(self.lazy)
-        self.lazy = 0
-        if lo < mid:
-            res += self.left.query(lo, hi)
-        if hi > mid:
-            res += self.right.query(lo, hi)
-        self.val = self.left.val + self.right.val
-        return res
-
-
 class Solution:
-    def sumCounts(self, nums: list[int]) -> int:
-        last_idx_dict = {}
-        segment_tree = SegmentTreeNode(0, len(nums))
-        res = 0
-        curr_res = 0
-        for i, num in enumerate(nums):
-            last_idx = last_idx_dict.get(num, -1) + 1
-            curr_res = (
-                curr_res + i - last_idx + 1 + 2 * segment_tree.query(last_idx, i + 1)
-            ) % MOD
-            res += curr_res
-            last_idx_dict[num] = i
-        return res % MOD
+    def sumCounts(self, nums: List[int]) -> int:
+        MOD = 10**9 + 7
+        n = len(nums)
+        sm = [0] * (4 * n)
+        sq = [0] * (4 * n)
+        lz = [0] * (4 * n)
+
+        def apply(node, ln, v):
+            sq[node] += 2 * v * sm[node] + v * v * ln
+            sm[node] += v * ln
+            lz[node] += v
+
+        def update(node, l, r, ql, qr):
+            if qr < l or r < ql:
+                return
+            if ql <= l and r <= qr:
+                apply(node, r - l + 1, 1)
+                return
+            mid = (l + r) // 2
+            if lz[node]:
+                apply(node * 2, mid - l + 1, lz[node])
+                apply(node * 2 + 1, r - mid, lz[node])
+                lz[node] = 0
+            update(node * 2, l, mid, ql, qr)
+            update(node * 2 + 1, mid + 1, r, ql, qr)
+            sm[node] = sm[node * 2] + sm[node * 2 + 1]
+            sq[node] = sq[node * 2] + sq[node * 2 + 1]
+
+        last = {}
+        ans = 0
+        for j, x in enumerate(nums):
+            update(1, 0, n - 1, last.get(x, -1) + 1, j)
+            last[x] = j
+            ans = (ans + sq[1]) % MOD
+
+        return ans
