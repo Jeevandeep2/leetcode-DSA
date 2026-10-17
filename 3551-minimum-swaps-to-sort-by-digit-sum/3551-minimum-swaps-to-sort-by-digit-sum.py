@@ -1,34 +1,14 @@
 class Solution:
     def minSwaps(self, nums: List[int]) -> int:
-        n = len(nums)
-        digitSum = [0] * n
-        for i, v in enumerate(nums):
-            s = 0
-            while v > 0:
-                s += v % 10
-                v //= 10
-            digitSum[i] = s
+        digit_sum = lambda x: sum(map(int, str(x)))
+        rank = {x: k for k, x in enumerate(sorted(nums, key=lambda x: (digit_sum(x), x)))}  # final position of each value
+        home = [rank[x] for x in nums]  # where the value at each position must go
 
-        indices = list(range(n))
-        indices.sort(key=lambda i: (digitSum[i], nums[i]))
+        swaps = 0
+        for i in range(len(home)):
+            while home[i] != i:  # send the value at i home, take that spot's value in exchange
+                j = home[i]
+                home[i], home[j] = home[j], home[i]
+                swaps += 1
 
-        targetPos = [0] * n
-        for pos, idx in enumerate(indices):
-            targetPos[idx] = pos
-
-        parent = list(range(n))
-        components = n
-
-        def find(x):
-            if parent[x] != x:
-                parent[x] = find(parent[x])
-            return parent[x]
-
-        for i in range(n):
-            ri = find(i)
-            rj = find(targetPos[i])
-            if ri != rj:
-                parent[ri] = rj
-                components -= 1
-
-        return n - components
+        return swaps
