@@ -1,49 +1,57 @@
 class Solution:
-    def operation(self, k, nums):
+    def sortableIntegers(self, nums: List[int]) -> int:
         n = len(nums)
-        chunks = n // k
-        minMax = []
 
-        for i in range(chunks):
-            start = i * k
-            mini = float('inf')
-            maxi = float('-inf')
-            cnt = 0
+        fac = []
+        for x in range(1, isqrt(n) + 1):
+            if n % x == 0:
+                fac.append(x)
+                if n // x != x:
+                    fac.append(n // x)
 
-            for j in range(k):
-                curr = nums[start + j]
-                next_val = nums[start + (j + 1) % k]
+        target = sorted(nums)
 
-                mini = min(mini, curr)
-                maxi = max(maxi, curr)
+        def kmp(nums1, nums2):
+            n, m = len(nums1), len(nums2)
 
-                if curr > next_val:
-                    cnt += 1
+            pi = [0] * m
+            j = 0
 
-            if cnt > 1:
-                return False
+            for i in range(1, m):
+                while j > 0 and nums2[i] != nums2[j]:
+                    j = pi[j - 1]
 
-            minMax.append((mini, maxi))
+                if nums2[i] == nums2[j]:
+                    j += 1
 
-        for i in range(chunks - 1):
-            if minMax[i][1] > minMax[i + 1][0]:
-                return False
+                pi[i] = j
 
-        return True
+            j = 0
+            for i in range(n):
+                while j > 0 and nums1[i] != nums2[j]:
+                    j = pi[j - 1]
 
-    def sortableIntegers(self, nums):
-        n = len(nums)
+                if nums1[i] == nums2[j]:
+                    j += 1
+
+                if j == m:
+                    return True
+
+            return False
+
+        def check(nums1, nums2):
+            # Check whether cyclic rotations of nums1 can produce nums2
+            return kmp(nums1 + nums1, nums2)
+
         ans = 0
 
-        i = 1
-        while i * i <= n:
-            if n % i == 0:
-                if self.operation(i, nums):
-                    ans += i
+        for d in fac:
+            for left in range(0, n, d):
+                right = left + d - 1
 
-                if i != n // i:
-                    if self.operation(n // i, nums):
-                        ans += (n // i)
-            i += 1
+                if not check(nums[left : right + 1], target[left : right + 1]):
+                    break
+            else:
+                ans += d
 
         return ans
