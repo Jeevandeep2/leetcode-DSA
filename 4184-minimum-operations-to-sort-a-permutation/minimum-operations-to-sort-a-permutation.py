@@ -1,9 +1,26 @@
 class Solution:
     def minOperations(self, nums: List[int]) -> int:
-        n, shift = len(nums), nums.index(0)
-        ring = lambda k: nums[(shift + k) % n]  
-        if all(ring(k) == k for k in range(n)):  # counts up along the arrow
-            return min(shift, n - shift + 2)  # walk ahead, or turn, walk back, turn back
-        if all(ring(k) == -k % n for k in range(n)):  # counts up against the arrow
-            return min(shift + 2, n - shift)  # walk ahead and turn, or turn and walk back
-        return -1
+        n = len(nums)
+        if n == 1:
+            return 0
+
+        start = nums.index(0)
+
+        asc = True
+        desc = True
+
+        for i in range(1, n):
+            value = nums[(start + i) % n]
+
+            if value != i:
+                asc = False
+            if value != n - i:
+                desc = False
+
+            if not asc and not desc:
+                return -1
+
+        if asc:
+            return min(start, n - start + 2)
+
+        return min(n - start, start + 2)
