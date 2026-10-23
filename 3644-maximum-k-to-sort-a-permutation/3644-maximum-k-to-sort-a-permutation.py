@@ -5,5 +5,6 @@ class Solution:
             if x != i:
                 k &= x  
                 if not k: 
-                    return 0                
+                    return 0   
+                                 
         return max(k, 0)
