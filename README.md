@@ -27,6 +27,7 @@
 | [1541-minimum-insertions-to-balance-a-parentheses-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1541-minimum-insertions-to-balance-a-parentheses-string) |
 | [1614-maximum-nesting-depth-of-the-parentheses](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1614-maximum-nesting-depth-of-the-parentheses) |
 | [1807-evaluate-the-bracket-pairs-of-a-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1807-evaluate-the-bracket-pairs-of-a-string) |
+| [2409-count-days-spent-together](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2409-count-days-spent-together) |
 | [2472-maximum-number-of-non-overlapping-palindrome-substrings](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2472-maximum-number-of-non-overlapping-palindrome-substrings) |
 | [3863-minimum-operations-to-sort-a-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3863-minimum-operations-to-sort-a-string) |
 ## Backtracking
@@ -68,6 +69,7 @@
 | ------- |
 | [0836-rectangle-overlap](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0836-rectangle-overlap) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
+| [2409-count-days-spent-together](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2409-count-days-spent-together) |
 | [3723-maximize-sum-of-squares-of-digits](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3723-maximize-sum-of-squares-of-digits) |
 | [3886-sum-of-sortable-integers](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3886-sum-of-sortable-integers) |
 ## Geometry
