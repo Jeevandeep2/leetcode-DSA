@@ -25,4 +25,5 @@ class Solution:
                 if grid[i][j] == 0:
                     ans += 1
                     dfs(i, j)
+                    
         return ans
