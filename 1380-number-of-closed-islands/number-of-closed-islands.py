@@ -22,4 +22,5 @@ class Solution:
                 if grid[i][j] == 0:
                     count += 1
                     dfs(i, j)
+                    
         return count
