@@ -55,6 +55,7 @@
 | ------- |
 | [0301-remove-invalid-parentheses](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0301-remove-invalid-parentheses) |
 | [1096-brace-expansion-ii](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1096-brace-expansion-ii) |
+| [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 ## Sorting
 |  |
 | ------- |
@@ -103,6 +104,7 @@
 ## Array
 |  |
 | ------- |
+| [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 | [1807-evaluate-the-bracket-pairs-of-a-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1807-evaluate-the-bracket-pairs-of-a-string) |
 | [2089-find-target-indices-after-sorting-array](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2089-find-target-indices-after-sorting-array) |
@@ -135,6 +137,7 @@
 ## Matrix
 |  |
 | ------- |
+| [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 | [2267-check-if-there-is-a-valid-parentheses-string-path](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2267-check-if-there-is-a-valid-parentheses-string-path) |
 ## Binary Search
 |  |
@@ -176,6 +179,7 @@
 ## Union-Find
 |  |
 | ------- |
+| [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 ## Binary Search Tree
 |  |
@@ -197,4 +201,8 @@
 |  |
 | ------- |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
+## Depth-First Search
+|  |
+| ------- |
+| [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 <!---LeetCode Topics End-->
