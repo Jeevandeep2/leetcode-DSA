@@ -61,6 +61,7 @@
 |  |
 | ------- |
 | [1096-brace-expansion-ii](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1096-brace-expansion-ii) |
+| [1502-can-make-arithmetic-progression-from-sequence](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1502-can-make-arithmetic-progression-from-sequence) |
 | [2089-find-target-indices-after-sorting-array](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2089-find-target-indices-after-sorting-array) |
 | [2333-minimum-sum-of-squared-difference](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2333-minimum-sum-of-squared-difference) |
 | [3551-minimum-swaps-to-sort-by-digit-sum](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3551-minimum-swaps-to-sort-by-digit-sum) |
@@ -107,6 +108,7 @@
 |  |
 | ------- |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1502-can-make-arithmetic-progression-from-sequence](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1502-can-make-arithmetic-progression-from-sequence) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 | [1807-evaluate-the-bracket-pairs-of-a-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1807-evaluate-the-bracket-pairs-of-a-string) |
 | [2089-find-target-indices-after-sorting-array](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2089-find-target-indices-after-sorting-array) |
