@@ -1,18 +1,12 @@
-class Solution:
-    def minCost(self, grid: list[list[int]]) -> int:
-        m, n = len(grid), len(grid[0])
+ class Solution:
+    def minCost(self, A: list[list[int]]) -> int:
+        dp = [set()] * len(A[0])
+        dp[0] = set([0])
+        
+        for i in range(len(A)):
+            for j in range(len(A[0])):
+                prev = dp[j].union(dp[j - 1]) if j else dp[j]
+                dp[j] = set(x ^ A[i][j] for x in prev)                
 
-        dp = [set() for _ in range(n)]
-        dp[0].add(grid[0][0])
+        return min(dp[-1]) 
 
-        for i in range(m):
-            for j in range(n):
-                if i == 0 and j == 0:
-                    continue
-
-                value = grid[i][j]
-                reachable = dp[j] | (dp[j - 1] if j > 0 else set())
-
-                dp[j] = {k ^ value for k in reachable}
-
-        return min(dp[-1])
