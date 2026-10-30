@@ -17,5 +17,4 @@ class Solution:
                 r = run + 1 if labels[y] == labels[x] else 1
                 if r < best[y]:
                     heappush(heap, (d + w, r, y))
-                    
         return -1
