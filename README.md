@@ -72,6 +72,7 @@
 ## Math
 |  |
 | ------- |
+| [0453-minimum-moves-to-equal-array-elements](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0453-minimum-moves-to-equal-array-elements) |
 | [0836-rectangle-overlap](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0836-rectangle-overlap) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 | [2409-count-days-spent-together](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2409-count-days-spent-together) |
@@ -110,6 +111,7 @@
 ## Array
 |  |
 | ------- |
+| [0453-minimum-moves-to-equal-array-elements](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0453-minimum-moves-to-equal-array-elements) |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
 | [1502-can-make-arithmetic-progression-from-sequence](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1502-can-make-arithmetic-progression-from-sequence) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
