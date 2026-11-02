@@ -1,8 +1,5 @@
+import numpy as np
 class Solution:
     def minMoves2(self, nums: list[int]) -> int:
-        nums.sort()
-        n=len(nums)
-        minDiff=0
-        for i in range(n):
-            minDiff+=abs(nums[i]-nums[n//2])
-        return minDiff
+        part = np.partition(arr:= np.array(nums), m:=len(nums)//2)
+        return int(np.abs(arr-part[m]).sum())
