@@ -1,20 +1,29 @@
-class Solution:
-    def minMoves2(self, nums: List[int]) -> int:
-        def quickselect(a, k):
-            while True:
-                if len(a) <= 1:
-                    return a[0]
-                p = random.choice(a)
-                lo = [x for x in a if x < p]
-                if k < len(lo):
-                    a = lo
-                    continue
-                hi = [x for x in a if x > p]
-                if k >= len(a) - len(hi):
-                    k -= len(a) - len(hi)
-                    a = hi
-                    continue
-                return p  # pivot sits at position k
+import random
 
-        med = quickselect(nums, len(nums) // 2)
-        return sum(abs(x - med) for x in nums)
+class Solution:
+    def minMoves2(self, nums):
+        n = len(nums)
+        k = n // 2
+        lo, hi = 0, n - 1
+        while lo < hi:
+            pivot = nums[random.randint(lo, hi)]
+            lt, gt, i = lo, hi, lo
+            while i <= gt:
+                if nums[i] < pivot:
+                    nums[lt], nums[i] = nums[i], nums[lt]
+                    lt += 1
+                    i += 1
+                elif nums[i] > pivot:
+                    nums[i], nums[gt] = nums[gt], nums[i]
+                    gt -= 1
+                else:
+                    i += 1
+            if k < lt:
+                hi = lt - 1
+            elif k > gt:
+                lo = gt + 1
+            else:
+                break
+        median = nums[k]
+        return sum(abs(x - median) for x in nums)
+        
