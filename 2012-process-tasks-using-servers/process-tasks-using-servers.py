@@ -1,30 +1,14 @@
 class Solution:
-    def assignTasks(self, servers: List[int], tasks: List[int]) -> List[int]:
-        # Busy servers, stored as pairs (t, idx)
-        busy = list()
+    def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
+        free = [(w, i) for i, w in enumerate(servers)]
+        heapify(free)
 
-        # Idle servers, stored as pairs (w, idx)
-        idle = [(w, i) for i, w in enumerate(servers)]
-        heapq.heapify(idle)
-
-        ts = 0
-
-        # Move servers with t<=ts from priority queue busy to priority queue idle one by one
-        def release():
-            while busy and busy[0][0] <= ts:
-                _, idx = heapq.heappop(busy)
-                heapq.heappush(idle, (servers[idx], idx))
-
-        ans = list()
-        for i, task in enumerate(tasks):
-            ts = max(ts, i)
-            release()
-            if not idle:
-                ts = busy[0][0]
-                release()
-
-            _, idx = heapq.heappop(idle)
-            ans.append(idx)
-            heapq.heappush(busy, (ts + task, idx))
+        ans, busy = [], []  # busy: (second it frees up, weight, index)
+        for s, t in enumerate(tasks):
+            while busy and busy[0][0] <= s:  # done by second s
+                heappush(free, heappop(busy)[1:])
+            start, w, i = (s, *heappop(free)) if free else heappop(busy)  # none free: the first to finish takes it
+            heappush(busy, (start + t, w, i))
+            ans.append(i)
 
         return ans
