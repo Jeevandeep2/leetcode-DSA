@@ -1,47 +1,14 @@
-
-import heapq
-
 class Solution:
-    def assignTasks(self, servers, tasks):
+    def assignTasks(self, servers: list[int], tasks: list[int]) -> list[int]:
+        free = [(w, i) for i, w in enumerate(servers)]
+        heapify(free)
 
-        m = len(servers)
-        n = len(tasks)
-
-        # Busy: (finishTime, index, weight)
-        busy = []
-
-        # Free: (weight, index)
-        free = []
-
-        for i in range(m):
-            heapq.heappush(free, (servers[i], i))
-
-        ans = [0] * n
-        time = 0
-
-        for i in range(n):
-
-            time = max(i, time)
-
-            if not free:
-                time = max(time, busy[0][0])
-
-            # Move completed servers to free heap
-            while busy and busy[0][0] <= time:
-                finishTime, index, weight = heapq.heappop(busy)
-
-                heapq.heappush(free, (weight, index))
-
-            # Pick best available server
-            weight, index = heapq.heappop(free)
-
-            ans[i] = index
-
-            # Mark server as busy
-            heapq.heappush(
-                busy,
-                (time + tasks[i], index, weight)
-            )
+        ans, busy = [], []  # busy: (second it frees up, weight, index)
+        for s, t in enumerate(tasks):
+            while busy and busy[0][0] <= s:  # done by second s
+                heappush(free, heappop(busy)[1:])
+            start, w, i = (s, *heappop(free)) if free else heappop(busy)  # none free: the first to finish takes it
+            heappush(busy, (start + t, w, i))
+            ans.append(i)
 
         return ans
-        
