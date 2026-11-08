@@ -60,6 +60,7 @@
 | [0301-remove-invalid-parentheses](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0301-remove-invalid-parentheses) |
 | [1096-brace-expansion-ii](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1096-brace-expansion-ii) |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 | [3619-count-islands-with-total-value-divisible-by-k](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3619-count-islands-with-total-value-divisible-by-k) |
 ## Sorting
 |  |
@@ -122,6 +123,7 @@
 | [0453-minimum-moves-to-equal-array-elements](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0453-minimum-moves-to-equal-array-elements) |
 | [0462-minimum-moves-to-equal-array-elements-ii](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/0462-minimum-moves-to-equal-array-elements-ii) |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 | [1502-can-make-arithmetic-progression-from-sequence](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1502-can-make-arithmetic-progression-from-sequence) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 | [1807-evaluate-the-bracket-pairs-of-a-string](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1807-evaluate-the-bracket-pairs-of-a-string) |
@@ -164,6 +166,7 @@
 |  |
 | ------- |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 | [2267-check-if-there-is-a-valid-parentheses-string-path](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2267-check-if-there-is-a-valid-parentheses-string-path) |
 | [3619-count-islands-with-total-value-divisible-by-k](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3619-count-islands-with-total-value-divisible-by-k) |
 | [3665-twisted-mirror-path-count](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3665-twisted-mirror-path-count) |
@@ -218,6 +221,7 @@
 |  |
 | ------- |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 | [1569-number-of-ways-to-reorder-array-to-get-same-bst](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1569-number-of-ways-to-reorder-array-to-get-same-bst) |
 | [3619-count-islands-with-total-value-divisible-by-k](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3619-count-islands-with-total-value-divisible-by-k) |
 ## Binary Search Tree
@@ -244,6 +248,7 @@
 |  |
 | ------- |
 | [1254-number-of-closed-islands](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1254-number-of-closed-islands) |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 | [3619-count-islands-with-total-value-divisible-by-k](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3619-count-islands-with-total-value-divisible-by-k) |
 | [3841-palindromic-path-queries-in-a-tree](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3841-palindromic-path-queries-in-a-tree) |
 ## Graph Theory
@@ -259,4 +264,8 @@
 | ------- |
 | [2747-count-zero-request-servers](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/2747-count-zero-request-servers) |
 | [3505-minimum-operations-to-make-elements-within-k-subarrays-equal](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/3505-minimum-operations-to-make-elements-within-k-subarrays-equal) |
+## Counting
+|  |
+| ------- |
+| [1267-count-servers-that-communicate](https://github.com/Jeevandeep2/leetcode-DSA/tree/master/1267-count-servers-that-communicate) |
 <!---LeetCode Topics End-->
