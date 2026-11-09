@@ -1,14 +1,28 @@
-class Solution:
-    def busiestServers(self, k: int, arrival: list[int], load: list[int]) -> list[int]:
-        free = list(range(k))  # already a heap: each free server is keyed by its next turn
+class Solution(object):
+    def busiestServers(self, k, arrival, load):
+        """
+        :type k: int
+        :type arrival: List[int]
+        :type load: List[int]
+        :rtype: List[int]
+        """
+        # min heap
+        available = list(range(k))
+        # busy heap
+        busy=[]
+        res = [0] * k
+        for i, a in enumerate(arrival):
+            # these are done, put them back as available
+            while busy and busy[0][0] <= a:
+                _, x = heapq.heappop(busy)
+                # min(available) is at least i, at most i+k-1
+                heapq.heappush(available, i + (x-i)%k)
+            if available:
+                j = heapq.heappop(available) % k
+                heapq.heappush(busy, (a+load[i], j))
+                res[j] += 1
+        
+        a= max(res)
+        return [i for i in range(k) if res[i] == a]
 
-        handled, busy = [], []  # busy: (time it frees up, server)
-        for i, (t, d) in enumerate(zip(arrival, load)):
-            while busy and busy[0][0] <= t:  # done by time t
-                heappush(free, i + (heappop(busy)[1] - i) % k)  # its first turn from i on
-            if free:  # otherwise the request is dropped
-                x = heappop(free) % k
-                heappush(busy, (t + d, x))
-                handled.append(x)
-
-        return multimode(handled)
+        
