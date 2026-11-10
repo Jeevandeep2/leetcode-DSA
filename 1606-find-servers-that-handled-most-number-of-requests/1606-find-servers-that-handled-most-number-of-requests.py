@@ -21,7 +21,7 @@ class Solution(object):
                 j = heapq.heappop(available) % k
                 heapq.heappush(busy, (a+load[i], j))
                 res[j] += 1
-        
+                
         a= max(res)
         return [i for i in range(k) if res[i] == a]
 
