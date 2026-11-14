@@ -24,5 +24,6 @@ class Solution:
                 if cnt[head] == 0:
                     head += 1
                 j -= 1
+
             ans += j - i + 1
         return ans
