@@ -13,3 +13,4 @@ class ProductOfNumbers:
         if k >= len(self.prefix):  # the window reaches back to a zero
             return 0
         return self.prefix[-1] // self.prefix[-1 - k]
+        
