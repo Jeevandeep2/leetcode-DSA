@@ -7,4 +7,5 @@ class Solution:
                 left += 1
             product *= x
             best = max(best, right - left + 1)
+        
         return best
