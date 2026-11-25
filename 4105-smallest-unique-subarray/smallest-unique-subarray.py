@@ -1,36 +1,13 @@
 class Solution:
-    def smallestUniqueSubarray(self, nums):
-        MOD = 1000000007
-        BASE = 911382323
-
+    def smallestUniqueSubarray(self, nums: list[int]) -> int:
         n = len(nums)
-        h = [0] * (n + 1)
-        p = [0] * (n + 1)
-        p[0] = 1
+        names = [nums]  # names[k][i] same for equal windows nums[i:i + 2**k]
+        for k in range(n.bit_length() - 1):  # blocks of 2, 4, 8, ... while they fit
+            ids = {}  # pair of halves -> number of the whole window
+            names.append([ids.setdefault(pair, len(ids)) for pair in zip(names[k], names[k][2 ** k:])])
 
-        # Compute prefix hashes and powers of BASE
-        for i in range(n):
-            h[i + 1] = (h[i] * BASE + nums[i]) % MOD
-            p[i + 1] = p[i] * BASE % MOD
+        def found(length):  # is some window of this length unique?
+            k = length.bit_length() - 1  # its first 2**k elements and its last 2**k cover it
+            return 1 in Counter(zip(names[k], names[k][length - 2 ** k:])).values()
 
-        def check(length):
-            cnt = {}
-            for l in range(n - length + 1):
-                r = l + length
-                key = (h[r] - h[l] * p[length] % MOD + MOD) % MOD
-                cnt[key] = cnt.get(key, 0) + 1
-
-            for times in cnt.values():
-                if times == 1:
-                    return True
-            return False
-
-        lo, hi = 1, n
-        while lo < hi:
-            mid = lo + (hi - lo) // 2
-            if check(mid):
-                hi = mid
-            else:
-                lo = mid + 1
-
-        return lo
+        return bisect_left(range(1, n), True, key=found) + 1
