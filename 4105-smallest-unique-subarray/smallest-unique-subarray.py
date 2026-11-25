@@ -1,36 +1,39 @@
-class Solution:
+class Solution(object):
     def smallestUniqueSubarray(self, nums):
-        MOD = 1000000007
-        BASE = 911382323
+        MOD = 10**9 + 7
+        BASE = 13
 
-        n = len(nums)
-        h = [0] * (n + 1)
-        p = [0] * (n + 1)
-        p[0] = 1
+        def compute_hash(v, i, j):
+            p = 1
+            ret = 0
+            for idx in range(i, j + 1):
+                ret = (ret + v[idx] * p) % MOD
+                p = (p * BASE) % MOD
+            return ret
 
-        # Compute prefix hashes and powers of BASE
-        for i in range(n):
-            h[i + 1] = (h[i] * BASE + nums[i]) % MOD
-            p[i + 1] = p[i] * BASE % MOD
+        def check(m):
+            mp = Counter()
+            x = compute_hash(nums, 0, m - 1)
+            p = pow(BASE, m - 1, MOD)
+            inv = pow(BASE, MOD - 2, MOD)
+            mp[x] += 1
 
-        def check(length):
-            cnt = {}
-            for l in range(n - length + 1):
-                r = l + length
-                key = (h[r] - h[l] * p[length] % MOD + MOD) % MOD
-                cnt[key] = cnt.get(key, 0) + 1
+            for i in range(len(nums) - m):
+                j = i + m
+                x = (x - nums[i]) % MOD
+                x = (x * inv) % MOD
+                x = (x + nums[j] * p) % MOD
+                mp[x] += 1
 
-            for times in cnt.values():
-                if times == 1:
-                    return True
-            return False
+            return any(count == 1 for count in mp.values())
 
-        lo, hi = 1, n
-        while lo < hi:
-            mid = lo + (hi - lo) // 2
+        low, high = 1, len(nums)
+        ans = len(nums)
+        while low <= high:
+            mid = (low + high) // 2
             if check(mid):
-                hi = mid
+                ans = mid
+                high = mid - 1
             else:
-                lo = mid + 1
-
-        return lo
+                low = mid + 1
+        return ans
