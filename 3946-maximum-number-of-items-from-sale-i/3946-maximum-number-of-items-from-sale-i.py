@@ -1,14 +1,15 @@
 class Solution:
     def maximumSaleItems(self, items: List[List[int]], budget: int) -> int:
-        f = [0] * (budget + 1)
-        mn = inf
+        factors, prices = zip(*items)
+        have = [0] * (max(factors) + 1)  # have[f]: items with factor f
+        for factor in factors:
+            have[factor] += 1
+        gains = {factor: sum(have[factor::factor]) for factor in set(factors)}  # every factor-th cell is a multiple
 
+        cheapest = min(prices)
+        best = [money // cheapest for money in range(budget + 1)]  # no first copies yet: everything goes to the cheapest item
         for factor, price in items:
-            mn = min(mn, price)
-
-            cnt = sum(factor_j % factor == 0 for factor_j, _ in items)
-
-            for j in range(budget, price - 1, -1):
-                f[j] = max(f[j], f[j - price] + cnt)
-
-        return max(x + (budget - i) // mn for i, x in enumerate(f))
+            if (gain := gains[factor]) > price // cheapest:  # else the same money buys as many copies of the cheapest item
+                for money in range(budget, price - 1, -1):  # backwards: one first copy per item
+                    best[money] = max(best[money], best[money - price] + gain)
+        return best[budget]
